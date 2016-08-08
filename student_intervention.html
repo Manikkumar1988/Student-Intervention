@@ -11854,7 +11854,7 @@ It is classification type supervised learning problem.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">print</span> <span class="s1">&#39;No of rows and columns {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">student_data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
@@ -11948,7 +11948,7 @@ None
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span>
@@ -12012,7 +12012,7 @@ Graduation rate of the class: 67.09%
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Extract feature columns</span>
@@ -12094,7 +12094,7 @@ Feature values:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">preprocess_features</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
@@ -12165,11 +12165,11 @@ Feature values:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Import any additional functionality you may need here</span>
-<span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="kn">import</span> <span class="n">ShuffleSplit</span>
+<span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="kn">import</span> <span class="n">train_test_split</span>
 
 <span class="c1"># TODO: Set the number of training points</span>
 <span class="n">num_train</span> <span class="o">=</span> <span class="mi">300</span>
@@ -12177,18 +12177,8 @@ Feature values:
 <span class="c1"># Set the number of testing points</span>
 <span class="n">num_test</span> <span class="o">=</span> <span class="n">X_all</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">num_train</span>
 
-<span class="n">cv</span> <span class="o">=</span> <span class="n">ShuffleSplit</span><span class="p">(</span><span class="n">student_data</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">test_size</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-
 <span class="c1"># TODO: Shuffle and split the dataset into the number of training and testing points above</span>
-<span class="n">X_train</span> <span class="o">=</span> <span class="bp">None</span>
-<span class="n">X_test</span> <span class="o">=</span> <span class="bp">None</span>
-<span class="n">y_train</span> <span class="o">=</span> <span class="bp">None</span>
-<span class="n">y_test</span> <span class="o">=</span> <span class="bp">None</span>
-<span class="k">for</span> <span class="n">train_index</span><span class="p">,</span> <span class="n">test_index</span> <span class="ow">in</span> <span class="n">cv</span><span class="p">:</span>
-    <span class="n">X_train</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">X_all</span><span class="p">[</span><span class="n">train_index</span><span class="p">])</span>
-    <span class="n">y_train</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y_all</span><span class="p">[</span><span class="n">train_index</span><span class="p">])</span>
-    <span class="n">X_test</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">X_all</span><span class="p">[</span><span class="n">test_index</span><span class="p">])</span>
-    <span class="n">y_test</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y_all</span><span class="p">[</span><span class="n">test_index</span><span class="p">])</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_all</span><span class="p">,</span> <span class="n">y_all</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.24</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> 
 
 <span class="c1"># Show the results of the split</span>
 <span class="k">print</span> <span class="s2">&quot;Training set has {} samples.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
@@ -12204,39 +12194,10 @@ Feature values:
 
 
 <div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-red-intense-fg ansi-bold">---------------------------------------------------------------------------</span>
-<span class="ansi-red-intense-fg ansi-bold">ValueError</span>                                Traceback (most recent call last)
-<span class="ansi-green-intense-fg ansi-bold">&lt;ipython-input-20-bcebf57a6883&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-intense-fg ansi-bold">()</span>
-<span class="ansi-green-fg">      8</span> num_test <span class="ansi-yellow-intense-fg ansi-bold">=</span> X_all<span class="ansi-yellow-intense-fg ansi-bold">.</span>shape<span class="ansi-yellow-intense-fg ansi-bold">[</span><span class="ansi-cyan-intense-fg ansi-bold">0</span><span class="ansi-yellow-intense-fg ansi-bold">]</span> <span class="ansi-yellow-intense-fg ansi-bold">-</span> num_train
-<span class="ansi-green-fg">      9</span> 
-<span class="ansi-green-intense-fg ansi-bold">---&gt; 10</span><span class="ansi-yellow-intense-fg ansi-bold"> </span>cv <span class="ansi-yellow-intense-fg ansi-bold">=</span> ShuffleSplit<span class="ansi-yellow-intense-fg ansi-bold">(</span>student_data<span class="ansi-yellow-intense-fg ansi-bold">,</span> n_iter<span class="ansi-yellow-intense-fg ansi-bold">=</span><span class="ansi-cyan-intense-fg ansi-bold">10</span><span class="ansi-yellow-intense-fg ansi-bold">,</span>test_size<span class="ansi-yellow-intense-fg ansi-bold">=</span><span class="ansi-cyan-intense-fg ansi-bold">25</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> random_state<span class="ansi-yellow-intense-fg ansi-bold">=</span><span class="ansi-cyan-intense-fg ansi-bold">0</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">     11</span> 
-<span class="ansi-green-fg">     12</span> <span class="ansi-red-intense-fg ansi-bold"># TODO: Shuffle and split the dataset into the number of training and testing points above</span>
-
-<span class="ansi-green-intense-fg ansi-bold">C:\Users\ACER\Anaconda2\lib\site-packages\sklearn\cross_validation.pyc</span> in <span class="ansi-cyan-fg">__init__</span><span class="ansi-blue-intense-fg ansi-bold">(self, n, n_iter, test_size, train_size, random_state)</span>
-<span class="ansi-green-fg">    732</span>         self<span class="ansi-yellow-intense-fg ansi-bold">.</span>random_state <span class="ansi-yellow-intense-fg ansi-bold">=</span> random_state
-<span class="ansi-green-fg">    733</span>         self.n_train, self.n_test = _validate_shuffle_split(n, test_size,
-<span class="ansi-green-intense-fg ansi-bold">--&gt; 734</span><span class="ansi-yellow-intense-fg ansi-bold">                                                             train_size)
-</span><span class="ansi-green-fg">    735</span> 
-<span class="ansi-green-fg">    736</span>     <span class="ansi-green-intense-fg ansi-bold">def</span> __iter__<span class="ansi-yellow-intense-fg ansi-bold">(</span>self<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-
-<span class="ansi-green-intense-fg ansi-bold">C:\Users\ACER\Anaconda2\lib\site-packages\sklearn\cross_validation.pyc</span> in <span class="ansi-cyan-fg">_validate_shuffle_split</span><span class="ansi-blue-intense-fg ansi-bold">(n, test_size, train_size)</span>
-<span class="ansi-green-fg">    841</span>                     &#39;than 1.0 or be an integer&#39; % test_size)
-<span class="ansi-green-fg">    842</span>         <span class="ansi-green-intense-fg ansi-bold">elif</span> np<span class="ansi-yellow-intense-fg ansi-bold">.</span>asarray<span class="ansi-yellow-intense-fg ansi-bold">(</span>test_size<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">.</span>dtype<span class="ansi-yellow-intense-fg ansi-bold">.</span>kind <span class="ansi-yellow-intense-fg ansi-bold">==</span> <span class="ansi-blue-intense-fg ansi-bold">&#39;i&#39;</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-intense-fg ansi-bold">--&gt; 843</span><span class="ansi-yellow-intense-fg ansi-bold">             </span><span class="ansi-green-intense-fg ansi-bold">if</span> test_size <span class="ansi-yellow-intense-fg ansi-bold">&gt;=</span> n<span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-fg">    844</span>                 raise ValueError(
-<span class="ansi-green-fg">    845</span>                     <span class="ansi-blue-intense-fg ansi-bold">&#39;test_size=%d should be smaller &#39;</span>
-
-<span class="ansi-green-intense-fg ansi-bold">C:\Users\ACER\Anaconda2\lib\site-packages\pandas\core\generic.pyc</span> in <span class="ansi-cyan-fg">__nonzero__</span><span class="ansi-blue-intense-fg ansi-bold">(self)</span>
-<span class="ansi-green-fg">    890</span>         raise ValueError(&#34;The truth value of a {0} is ambiguous. &#34;
-<span class="ansi-green-fg">    891</span>                          <span class="ansi-blue-intense-fg ansi-bold">&#34;Use a.empty, a.bool(), a.item(), a.any() or a.all().&#34;</span>
-<span class="ansi-green-intense-fg ansi-bold">--&gt; 892</span><span class="ansi-yellow-intense-fg ansi-bold">                          .format(self.__class__.__name__))
-</span><span class="ansi-green-fg">    893</span> 
-<span class="ansi-green-fg">    894</span>     __bool__ <span class="ansi-yellow-intense-fg ansi-bold">=</span> __nonzero__
-
-<span class="ansi-red-intense-fg ansi-bold">ValueError</span>: The truth value of a DataFrame is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().</pre>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Training set has 300 samples.
+Testing set has 95 samples.
+</pre>
 </div>
 </div>
 
@@ -12310,7 +12271,7 @@ Feature values:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">train_classifier</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">):</span>
@@ -12383,34 +12344,124 @@ Feature values:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Import the three supervised learning models from sklearn</span>
-<span class="c1"># from sklearn import model_A</span>
-<span class="c1"># from sklearn import model_B</span>
-<span class="c1"># from skearln import model_C</span>
+<span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">svm</span>
+<span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
 
 <span class="c1"># TODO: Initialize the three models</span>
-<span class="n">clf_A</span> <span class="o">=</span> <span class="bp">None</span>
-<span class="n">clf_B</span> <span class="o">=</span> <span class="bp">None</span>
-<span class="n">clf_C</span> <span class="o">=</span> <span class="bp">None</span>
+
+<span class="n">clf_A</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
+<span class="n">clf_B</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">SVC</span><span class="p">()</span>
+<span class="n">clf_C</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 
 <span class="c1"># TODO: Set up the training set sizes</span>
-<span class="n">X_train_100</span> <span class="o">=</span> <span class="bp">None</span>
-<span class="n">y_train_100</span> <span class="o">=</span> <span class="bp">None</span>
+<span class="n">X_train_100</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[:</span><span class="mi">100</span><span class="p">]</span>
+<span class="n">y_train_100</span> <span class="o">=</span> <span class="n">y_train</span><span class="p">[:</span><span class="mi">100</span><span class="p">]</span>
 
-<span class="n">X_train_200</span> <span class="o">=</span> <span class="bp">None</span>
-<span class="n">y_train_200</span> <span class="o">=</span> <span class="bp">None</span>
+<span class="n">X_train_200</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[:</span><span class="mi">200</span><span class="p">]</span>
+<span class="n">y_train_200</span> <span class="o">=</span> <span class="n">y_train</span><span class="p">[:</span><span class="mi">200</span><span class="p">]</span>
 
-<span class="n">X_train_300</span> <span class="o">=</span> <span class="bp">None</span>
-<span class="n">y_train_300</span> <span class="o">=</span> <span class="bp">None</span>
+<span class="n">X_train_300</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[:</span><span class="mi">300</span><span class="p">]</span>
+<span class="n">y_train_300</span> <span class="o">=</span> <span class="n">y_train</span><span class="p">[:</span><span class="mi">300</span><span class="p">]</span>
+
+
+<span class="n">X_test_100</span> <span class="o">=</span> <span class="n">X_test</span><span class="p">[:</span><span class="mi">100</span><span class="p">]</span>
+<span class="n">y_test_100</span> <span class="o">=</span> <span class="n">y_test</span><span class="p">[:</span><span class="mi">100</span><span class="p">]</span>
+
+<span class="n">X_test_200</span> <span class="o">=</span> <span class="n">X_test</span><span class="p">[:</span><span class="mi">200</span><span class="p">]</span>
+<span class="n">y_test_200</span> <span class="o">=</span> <span class="n">y_test</span><span class="p">[:</span><span class="mi">200</span><span class="p">]</span>
+
+<span class="n">X_test_300</span> <span class="o">=</span> <span class="n">X_test</span><span class="p">[:</span><span class="mi">300</span><span class="p">]</span>
+<span class="n">y_test_300</span> <span class="o">=</span> <span class="n">y_test</span><span class="p">[:</span><span class="mi">300</span><span class="p">]</span>
 
 <span class="c1"># TODO: Execute the &#39;train_predict&#39; function for each classifier and each training set size</span>
-<span class="c1"># train_predict(clf, X_train, y_train, X_test, y_test)</span>
+<span class="n">train_predict</span><span class="p">(</span><span class="n">clf_A</span><span class="p">,</span> <span class="n">X_train_100</span><span class="p">,</span> <span class="n">y_train_100</span><span class="p">,</span> <span class="n">X_test_100</span><span class="p">,</span> <span class="n">y_test_100</span><span class="p">)</span>
+<span class="n">train_predict</span><span class="p">(</span><span class="n">clf_A</span><span class="p">,</span> <span class="n">X_train_200</span><span class="p">,</span> <span class="n">y_train_200</span><span class="p">,</span> <span class="n">X_test_200</span><span class="p">,</span> <span class="n">y_test_200</span><span class="p">)</span>
+<span class="n">train_predict</span><span class="p">(</span><span class="n">clf_A</span><span class="p">,</span> <span class="n">X_train_300</span><span class="p">,</span> <span class="n">y_train_300</span><span class="p">,</span> <span class="n">X_test_300</span><span class="p">,</span> <span class="n">y_test_300</span><span class="p">)</span>
+
+
+<span class="n">train_predict</span><span class="p">(</span><span class="n">clf_B</span><span class="p">,</span> <span class="n">X_train_100</span><span class="p">,</span> <span class="n">y_train_100</span><span class="p">,</span> <span class="n">X_test_100</span><span class="p">,</span> <span class="n">y_test_100</span><span class="p">)</span>
+<span class="n">train_predict</span><span class="p">(</span><span class="n">clf_B</span><span class="p">,</span> <span class="n">X_train_200</span><span class="p">,</span> <span class="n">y_train_200</span><span class="p">,</span> <span class="n">X_test_200</span><span class="p">,</span> <span class="n">y_test_200</span><span class="p">)</span>
+<span class="n">train_predict</span><span class="p">(</span><span class="n">clf_B</span><span class="p">,</span> <span class="n">X_train_300</span><span class="p">,</span> <span class="n">y_train_300</span><span class="p">,</span> <span class="n">X_test_300</span><span class="p">,</span> <span class="n">y_test_300</span><span class="p">)</span>
+
+
+<span class="n">train_predict</span><span class="p">(</span><span class="n">clf_C</span><span class="p">,</span> <span class="n">X_train_100</span><span class="p">,</span> <span class="n">y_train_100</span><span class="p">,</span> <span class="n">X_test_100</span><span class="p">,</span> <span class="n">y_test_100</span><span class="p">)</span>
+<span class="n">train_predict</span><span class="p">(</span><span class="n">clf_C</span><span class="p">,</span> <span class="n">X_train_200</span><span class="p">,</span> <span class="n">y_train_200</span><span class="p">,</span> <span class="n">X_test_200</span><span class="p">,</span> <span class="n">y_test_200</span><span class="p">)</span>
+<span class="n">train_predict</span><span class="p">(</span><span class="n">clf_C</span><span class="p">,</span> <span class="n">X_train_300</span><span class="p">,</span> <span class="n">y_train_300</span><span class="p">,</span> <span class="n">X_test_300</span><span class="p">,</span> <span class="n">y_test_300</span><span class="p">)</span>
 </pre></div>
 
 </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Training a GaussianNB using a training set size of 100. . .
+Trained model in 0.0360 seconds
+Made predictions in 0.0010 seconds.
+F1 score for training set: 0.8550.
+Made predictions in 0.0010 seconds.
+F1 score for test set: 0.7481.
+Training a GaussianNB using a training set size of 200. . .
+Trained model in 0.0020 seconds
+Made predictions in 0.0020 seconds.
+F1 score for training set: 0.8321.
+Made predictions in 0.0010 seconds.
+F1 score for test set: 0.7132.
+Training a GaussianNB using a training set size of 300. . .
+Trained model in 0.0040 seconds
+Made predictions in 0.0040 seconds.
+F1 score for training set: 0.8088.
+Made predictions in 0.0020 seconds.
+F1 score for test set: 0.7500.
+Training a SVC using a training set size of 100. . .
+Trained model in 0.0040 seconds
+Made predictions in 0.0020 seconds.
+F1 score for training set: 0.8591.
+Made predictions in 0.0010 seconds.
+F1 score for test set: 0.7838.
+Training a SVC using a training set size of 200. . .
+Trained model in 0.0100 seconds
+Made predictions in 0.0060 seconds.
+F1 score for training set: 0.8693.
+Made predictions in 0.0030 seconds.
+F1 score for test set: 0.7755.
+Training a SVC using a training set size of 300. . .
+Trained model in 0.0150 seconds
+Made predictions in 0.0110 seconds.
+F1 score for training set: 0.8692.
+Made predictions in 0.0040 seconds.
+F1 score for test set: 0.7586.
+Training a KNeighborsClassifier using a training set size of 100. . .
+Trained model in 0.0010 seconds
+Made predictions in 0.0040 seconds.
+F1 score for training set: 0.8235.
+Made predictions in 0.0030 seconds.
+F1 score for test set: 0.6667.
+Training a KNeighborsClassifier using a training set size of 200. . .
+Trained model in 0.0020 seconds
+Made predictions in 0.0090 seconds.
+F1 score for training set: 0.8612.
+Made predictions in 0.0050 seconds.
+F1 score for test set: 0.6667.
+Training a KNeighborsClassifier using a training set size of 300. . .
+Trained model in 0.0020 seconds
+Made predictions in 0.0160 seconds.
+F1 score for training set: 0.8869.
+Made predictions in 0.0070 seconds.
+F1 score for test set: 0.7218.
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
