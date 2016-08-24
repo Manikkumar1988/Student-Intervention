@@ -11785,7 +11785,20 @@ div#notebook {
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong>
 It is classification type supervised learning problem.</p>
-<p>Reason:</p>
+<p>Reasoning: 
+Technically, In a regression problem, we are trying to predict results within a continuous output, meaning that we are trying to map input variables to some continuous function. In a classification problem, we are instead trying to predict results in a discrete output. In other words, we try to map input variables into discrete output.
+In simpler terms in supervised learning, if data are used to predict the category it is called classification. On the other hand, if data is used to predict the particular value it is called as Regression. Categorial type can be binary values or class of values.</p>
+
+<pre><code>In layman terms, if problem statements analogies to "Is this A or B" falls under classification types. And if problem statement analogies to "How much/many?" those fall into regression types
+
+</code></pre>
+<p>For example,</p>
+<ol>
+<li>predicting dead or alive(categorial type) fall under classification type where as predicting price of house(specific value) fall under regression type.</li>
+<li>Will it rain on next tuesday would use classification algorithms and what would be temperature on next tuesday would use regression algorithm for prediction.</li>
+</ol>
+<p>In our problem statement we are required to predict category of students who require intervention before they fail to graduate.</p>
+<p>It is also important to be noted that regression problem can be changed to classification problem and vice versa.</p>
 
 </div>
 </div>
@@ -11854,7 +11867,7 @@ It is classification type supervised learning problem.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">print</span> <span class="s1">&#39;No of rows and columns {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">student_data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
@@ -11862,93 +11875,21 @@ It is classification type supervised learning problem.</p>
 <span class="k">print</span> <span class="s1">&#39;sample values&#39;</span>
 <span class="k">print</span> <span class="n">student_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 
-<span class="k">print</span> <span class="s1">&#39;Info&#39;</span>
+<span class="k">print</span> <span class="s1">&#39;Info about data-type of each columns&#39;</span>
 <span class="k">print</span> <span class="n">student_data</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+
+<span class="c1">#print &#39;Check for null values&#39;</span>
+<span class="c1">#pd.isnull(student_data)</span>
 </pre></div>
 
 </div>
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>No of rows and columns (395, 31)
-sample values
-  school sex  age address famsize Pstatus  Medu  Fedu     Mjob      Fjob  \
-0     GP   F   18       U     GT3       A     4     4  at_home   teacher   
-1     GP   F   17       U     GT3       T     1     1  at_home     other   
-2     GP   F   15       U     LE3       T     1     1  at_home     other   
-3     GP   F   15       U     GT3       T     4     2   health  services   
-4     GP   F   16       U     GT3       T     3     3    other     other   
-
-   ...   internet romantic  famrel  freetime  goout Dalc Walc health absences  \
-0  ...         no       no       4         3      4    1    1      3        6   
-1  ...        yes       no       5         3      3    1    1      3        4   
-2  ...        yes       no       4         3      2    2    3      3       10   
-3  ...        yes      yes       3         2      2    1    1      5        2   
-4  ...         no       no       4         3      2    1    2      5        4   
-
-  passed  
-0     no  
-1     no  
-2    yes  
-3    yes  
-4    yes  
-
-[5 rows x 31 columns]
-Info
-&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
-RangeIndex: 395 entries, 0 to 394
-Data columns (total 31 columns):
-school        395 non-null object
-sex           395 non-null object
-age           395 non-null int64
-address       395 non-null object
-famsize       395 non-null object
-Pstatus       395 non-null object
-Medu          395 non-null int64
-Fedu          395 non-null int64
-Mjob          395 non-null object
-Fjob          395 non-null object
-reason        395 non-null object
-guardian      395 non-null object
-traveltime    395 non-null int64
-studytime     395 non-null int64
-failures      395 non-null int64
-schoolsup     395 non-null object
-famsup        395 non-null object
-paid          395 non-null object
-activities    395 non-null object
-nursery       395 non-null object
-higher        395 non-null object
-internet      395 non-null object
-romantic      395 non-null object
-famrel        395 non-null int64
-freetime      395 non-null int64
-goout         395 non-null int64
-Dalc          395 non-null int64
-Walc          395 non-null int64
-health        395 non-null int64
-absences      395 non-null int64
-passed        395 non-null object
-dtypes: int64(13), object(18)
-memory usage: 67.9+ KB
-None
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span>
@@ -11973,6 +11914,8 @@ None
 <span class="k">print</span> <span class="s2">&quot;Number of students who passed: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n_passed</span><span class="p">)</span>
 <span class="k">print</span> <span class="s2">&quot;Number of students who failed: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n_failed</span><span class="p">)</span>
 <span class="k">print</span> <span class="s2">&quot;Graduation rate of the class: {:.2f}%&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">grad_rate</span><span class="p">)</span>
+
+<span class="k">print</span> <span class="s2">&quot;Approximately total no of students needs intervention in the training set: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">((</span><span class="n">n_students</span><span class="o">/</span><span class="mi">100</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">100</span><span class="o">-</span><span class="n">grad_rate</span><span class="p">))</span>
 </pre></div>
 
 </div>
@@ -11990,6 +11933,7 @@ Number of features: 31
 Number of students who passed: 265
 Number of students who failed: 130
 Graduation rate of the class: 67.09%
+Approximately total no of students needs intervention in the training set: 130.0
 </pre>
 </div>
 </div>
@@ -11997,6 +11941,17 @@ Graduation rate of the class: 67.09%
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>What does value of "Graduation rate" of the class 67.09% mean?</p>
+<p>It says currently 33%(approx) of students needs intervention in the training data set.</p>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -12012,7 +11967,7 @@ Graduation rate of the class: 67.09%
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Extract feature columns</span>
@@ -12094,7 +12049,7 @@ Feature values:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">preprocess_features</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
@@ -12165,7 +12120,7 @@ Feature values:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Import any additional functionality you may need here</span>
@@ -12246,7 +12201,109 @@ Testing set has 95 samples.
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer: </strong></p>
+<p><strong>Answer: </strong>
+<strong>Discussion about data</strong> Dataset has only binary values of 400 students</p>
+<p>Reasonable approach to choose an algorithm would be based on</p>
+<ul>
+<li>Dimension: Performance on any number of features without comprising much on processing time &amp; accuracy</li>
+<li>Students: Ability to model for any number of available data</li>
+<li>Time(proces): Time to train the model and prediction</li>
+<li>Space(memory): Computational memory required to the model over test data or real-time data</li>
+<li>Accuracy: how much accuracy we can obtain for given data and features</li>
+<li>Scalability: Ability to scale across new additional dimension/new set of students</li>
+<li>Outliers: Handling of outliers without deviating in prediction of non-outliers </li>
+</ul>
+<p>However it's not possible to get best values for all parameter, we can bring the optimal value based on our need.</p>
+<p>Along with checking above parameters of our chosen appropriate algorithm, algorithm's functionality and strength/weakness are to considered</p>
+<h3 id="Decision-Trees">Decision Trees<a class="anchor-link" href="#Decision-Trees">&#182;</a></h3><p>Decision trees poses a series of carefully crafted questions about the attributes of the each record. Each time time it receive an answer, a follow-up question is asked until a conclusion about the class label of the record is reached.</p>
+<p><strong>Strength of the model</strong></p>
+<ul>
+<li>Should be faster once trained</li>
+<li>Non-parametric, so you don't have to worry about outliers or whether the data is linearly separable</li>
+<li>Requires little data preparation. Just a tabular format would work</li>
+<li>Uses a white box model</li>
+<li>Performs well with large datasets</li>
+<li>Able to handle multi-output problems.</li>
+</ul>
+<p><strong>Weakness of the model</strong></p>
+<ul>
+<li>There are concepts that are hard to learn because decision trees do not express them easily, such as XOR, parity </li>
+<li>Complex trees are hard to interpret</li>
+<li>Easily overfit</li>
+</ul>
+<p><strong>Asymptotic analysis</strong>
+The constructing decision tree techniques are generally computationally inexpensive, making it possible to quickly construct models even when the training set size is very large. Furthermore, once a decision tree has been built, classifying a test record is extremely fast.</p>
+<p><strong>TIPS</strong></p>
+<ul>
+<li>Decision trees that are too large are susceptible to a phenomenon known as overfitting. </li>
+<li>Decision trees can be unstable because small variations in the data might result in a completely different tree being generated. </li>
+<li>Decision tree learners create biased trees if some classes dominate. It is therefore recommended to balance the dataset prior to fitting with the decision tree.</li>
+<li>It tends to slow down training when training deep trees</li>
+</ul>
+<p><strong>Good Candidate</strong> Yes, Yet along with ensemble method, gradient boosting, we can iteratively reach optimal model</p>
+<p>Real World Usage: Precipitation Classification Using Measurements From Commercial Microwave Links
+<a href="http://ieeexplore.ieee.org/document/6524051/">http://ieeexplore.ieee.org/document/6524051/</a></p>
+<h3 id="K-Nearest-Neighbors-(KNeighbors)">K-Nearest Neighbors (KNeighbors)<a class="anchor-link" href="#K-Nearest-Neighbors-(KNeighbors)">&#182;</a></h3><p>An object is classified by a majority vote of its neighbors, with the object being assigned to the class most common among 
+its k nearest neighbors (k is a positive integer, typically small). If k = 1, then the object is simply assigned to the 
+class of that single nearest neighbor. Use a distance-based voting scheme, where closer neighbors have 
+more influence.</p>
+<p><strong>Strength of the model</strong></p>
+<ul>
+<li>Work well for a small number of dimensions</li>
+<li>No need for tuning complex parameters to build a model. </li>
+</ul>
+<p><strong>Weakness of the model</strong></p>
+<ul>
+<li>Expensive and slow to predict new instances</li>
+<li>Must define a meaningful distance function</li>
+</ul>
+<p><strong>TIPS</strong>
+Choice of k is very critical – A small value of k means that noise will have a higher influence on the result. A large 
+value make it computationally expensive and kinda defeats the basic philosophy behind KNN (that points that are near might 
+have similar densities or classes). A simple approach to select k is set  k=sqrt{n}</p>
+<p><strong>Asymptotic analysis</strong>
+Even though the naive method takes O(dn) time, it is very hard to do better unless we make some other assumptions. There 
+are some efficient data structures like KD-Tree  which can reduce the time complexity but they do it at the cost of 
+increased training time and complexity. If we assume that the points are d-dimensional, then the straight forward implementation of finding k Nearest Neighbor takes O(dn) time.</p>
+<p><strong>Good Candidate</strong> Yes, intuitively data closer should be classifed as single class</p>
+<p>Real World Usage: Better Prediction of Protein Cellular Localization Sites with the it k Nearest Neighbors Classifier.
+<a href="http://www.aaai.org/Papers/ISMB/1997/ISMB97-022.pdf">http://www.aaai.org/Papers/ISMB/1997/ISMB97-022.pdf</a></p>
+<h3 id="Support-Vector-Machines-(SVM)">Support Vector Machines (SVM)<a class="anchor-link" href="#Support-Vector-Machines-(SVM)">&#182;</a></h3><p>It is a non-probabilistic binary linear classifier. SVM model is a representation of the examples as points in space, mapped so that the examples of the separate categories are divided by a clear gap that is as wide as possible. New examples are then mapped into that same space and predicted to belong to a category based on which side of the gap they fall on.</p>
+<p><strong>Strength of the model</strong></p>
+<ul>
+<li>Can model complex, nonlinear relationships</li>
+<li>Robust to noise </li>
+<li>High accuracy</li>
+<li>Effective in high dimensional spaces.</li>
+<li>Still effective in cases where number of dimensions is greater than the number of samples.</li>
+</ul>
+<p><strong>Weakness of the model</strong></p>
+<ul>
+<li>Might not look very effective without using kernel, Using kernel makes it computationally expensive, hence slow.</li>
+<li>Requires significant memory and processing power</li>
+<li>No standardized way for dealing with multi-class problems; fundamentally a binary classifier</li>
+</ul>
+<p><strong>Good Candidate</strong> Yes, due to binary classification</p>
+<p>Real World Usage: An efficient approach to predict tumor in 2D Brain image using classification techniques
+<a href="http://ieeexplore.ieee.org/document/6508256/">http://ieeexplore.ieee.org/document/6508256/</a></p>
+<h2 id="Discussion-on-rejected-algoritms">Discussion on rejected algoritms<a class="anchor-link" href="#Discussion-on-rejected-algoritms">&#182;</a></h2><h3 id="Gaussian-Naive-Bayes:">Gaussian Naive Bayes:<a class="anchor-link" href="#Gaussian-Naive-Bayes:">&#182;</a></h3><p><strong>Strength of the model</strong></p>
+<ul>
+<li>When assumption of independence holds, a Naive Bayes classifier performs better compare to other models like logistic regression and you need less training data.</li>
+<li>Very simple representation doesn't allow for rich hypotheses</li>
+</ul>
+<p><strong>Weakness of the model</strong></p>
+<ul>
+<li>If categorical variable has a category (in test data set), which was not observed in training data set, then model will assign a 0 (zero) probability and will be unable to make a prediction. This is often known as “Zero Frequency”.</li>
+<li>Another limitation of Naive Bayes is the assumption of independent predictors. In real life, it is almost impossible that we get a set of predictors which are completely independent.</li>
+</ul>
+<p><strong>Inference</strong> Lot of features are likely to be dependent, for example, "abscence" may be correlated to "health" and "internet/activities" may be correlated to "address".</p>
+<h3 id="Stochastic-Gradient-Descent-(SGDC)">Stochastic Gradient Descent (SGDC)<a class="anchor-link" href="#Stochastic-Gradient-Descent-(SGDC)">&#182;</a></h3><p><strong>Strength of the model</strong></p>
+<ul>
+<li>SGD often converges much faster compared to GD. Often in most cases, the close approximation that you get in SGD for the parameter values are enough because they reach the optimal values and keep oscillating there.</li>
+<li>One benefit of SGD is that it's computationally a whole lot faster. Large datasets often can't be held in RAM, which makes vectorization much less efficient. Rather, each sample or batch of samples must be loaded, worked with, the results stored, and so on.</li>
+</ul>
+<p><strong>Weakness of the model</strong>  The error function is not as well minimized as in the case of GD.</p>
+<p><strong>Inference</strong></p>
 
 </div>
 </div>
@@ -12271,7 +12328,7 @@ Testing set has 95 samples.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">train_classifier</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">):</span>
@@ -12344,19 +12401,19 @@ Testing set has 95 samples.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Import the three supervised learning models from sklearn</span>
-<span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">SGDClassifier</span>
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">svm</span>
-<span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
 
 <span class="c1"># TODO: Initialize the three models</span>
 
-<span class="n">clf_A</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
+<span class="n">clf_A</span> <span class="o">=</span> <span class="n">SGDClassifier</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s2">&quot;modified_huber&quot;</span><span class="p">)</span>
 <span class="n">clf_B</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">SVC</span><span class="p">()</span>
-<span class="n">clf_C</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">clf_C</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 
 <span class="c1"># TODO: Set up the training set sizes</span>
 <span class="n">X_train_100</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[:</span><span class="mi">100</span><span class="p">]</span>
@@ -12404,60 +12461,60 @@ Testing set has 95 samples.
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Training a GaussianNB using a training set size of 100. . .
-Trained model in 0.0360 seconds
-Made predictions in 0.0010 seconds.
-F1 score for training set: 0.8550.
-Made predictions in 0.0010 seconds.
-F1 score for test set: 0.7481.
-Training a GaussianNB using a training set size of 200. . .
-Trained model in 0.0020 seconds
-Made predictions in 0.0020 seconds.
-F1 score for training set: 0.8321.
-Made predictions in 0.0010 seconds.
-F1 score for test set: 0.7132.
-Training a GaussianNB using a training set size of 300. . .
-Trained model in 0.0040 seconds
-Made predictions in 0.0040 seconds.
-F1 score for training set: 0.8088.
-Made predictions in 0.0020 seconds.
-F1 score for test set: 0.7500.
+<pre>Training a SGDClassifier using a training set size of 100. . .
+Trained model in 0.1400 seconds
+Made predictions in 0.1410 seconds.
+F1 score for training set: 0.7805.
+Made predictions in 0.0000 seconds.
+F1 score for test set: 0.7662.
+Training a SGDClassifier using a training set size of 200. . .
+Trained model in 0.0000 seconds
+Made predictions in 0.0000 seconds.
+F1 score for training set: 0.4419.
+Made predictions in 0.0000 seconds.
+F1 score for test set: 0.3846.
+Training a SGDClassifier using a training set size of 300. . .
+Trained model in 0.0000 seconds
+Made predictions in 0.0000 seconds.
+F1 score for training set: 0.8166.
+Made predictions in 0.0000 seconds.
+F1 score for test set: 0.7770.
 Training a SVC using a training set size of 100. . .
-Trained model in 0.0040 seconds
-Made predictions in 0.0020 seconds.
+Trained model in 0.0150 seconds
+Made predictions in 0.0000 seconds.
 F1 score for training set: 0.8591.
-Made predictions in 0.0010 seconds.
+Made predictions in 0.0160 seconds.
 F1 score for test set: 0.7838.
 Training a SVC using a training set size of 200. . .
-Trained model in 0.0100 seconds
-Made predictions in 0.0060 seconds.
+Trained model in 0.0150 seconds
+Made predictions in 0.0160 seconds.
 F1 score for training set: 0.8693.
-Made predictions in 0.0030 seconds.
+Made predictions in 0.0000 seconds.
 F1 score for test set: 0.7755.
 Training a SVC using a training set size of 300. . .
-Trained model in 0.0150 seconds
-Made predictions in 0.0110 seconds.
+Trained model in 0.0310 seconds
+Made predictions in 0.0150 seconds.
 F1 score for training set: 0.8692.
-Made predictions in 0.0040 seconds.
+Made predictions in 0.0000 seconds.
 F1 score for test set: 0.7586.
-Training a KNeighborsClassifier using a training set size of 100. . .
-Trained model in 0.0010 seconds
-Made predictions in 0.0040 seconds.
-F1 score for training set: 0.8235.
-Made predictions in 0.0030 seconds.
-F1 score for test set: 0.6667.
-Training a KNeighborsClassifier using a training set size of 200. . .
-Trained model in 0.0020 seconds
-Made predictions in 0.0090 seconds.
-F1 score for training set: 0.8612.
-Made predictions in 0.0050 seconds.
-F1 score for test set: 0.6667.
-Training a KNeighborsClassifier using a training set size of 300. . .
-Trained model in 0.0020 seconds
-Made predictions in 0.0160 seconds.
-F1 score for training set: 0.8869.
-Made predictions in 0.0070 seconds.
-F1 score for test set: 0.7218.
+Training a RandomForestClassifier using a training set size of 100. . .
+Trained model in 0.0310 seconds
+Made predictions in 0.0000 seconds.
+F1 score for training set: 0.9688.
+Made predictions in 0.0000 seconds.
+F1 score for test set: 0.7612.
+Training a RandomForestClassifier using a training set size of 200. . .
+Trained model in 0.0310 seconds
+Made predictions in 0.0000 seconds.
+F1 score for training set: 0.9660.
+Made predictions in 0.0000 seconds.
+F1 score for test set: 0.7752.
+Training a RandomForestClassifier using a training set size of 300. . .
+Trained model in 0.0310 seconds
+Made predictions in 0.0000 seconds.
+F1 score for training set: 0.9805.
+Made predictions in 0.0000 seconds.
+F1 score for test set: 0.7391.
 </pre>
 </div>
 </div>
@@ -12481,7 +12538,7 @@ F1 score for test set: 0.7218.
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong> Classifer 1 - ?</strong></p>
+<p><strong> Classifer 1 - GuassianNb</strong></p>
 <table>
 <thead><tr>
 <th style="text-align:center">Training Set Size</th>
@@ -12494,28 +12551,28 @@ F1 score for test set: 0.7218.
 <tbody>
 <tr>
 <td style="text-align:center">100</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
+<td style="text-align:center">0.0360</td>
+<td style="text-align:center">0.0010</td>
+<td style="text-align:center">0.8550</td>
+<td style="text-align:center">0.7481</td>
 </tr>
 <tr>
 <td style="text-align:center">200</td>
-<td style="text-align:center">EXAMPLE</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
+<td style="text-align:center">0.0020</td>
+<td style="text-align:center">0.0010</td>
+<td style="text-align:center">0.8321</td>
+<td style="text-align:center">0.7132</td>
 </tr>
 <tr>
 <td style="text-align:center">300</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center">EXAMPLE</td>
+<td style="text-align:center">0.0040</td>
+<td style="text-align:center">0.0020</td>
+<td style="text-align:center">0.8088</td>
+<td style="text-align:center">0.7500</td>
 </tr>
 </tbody>
 </table>
-<p><strong> Classifer 2 - ?</strong></p>
+<p><strong> Classifer 2 - Support Vector Machine</strong></p>
 <table>
 <thead><tr>
 <th style="text-align:center">Training Set Size</th>
@@ -12528,28 +12585,28 @@ F1 score for test set: 0.7218.
 <tbody>
 <tr>
 <td style="text-align:center">100</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
+<td style="text-align:center">0.0040</td>
+<td style="text-align:center">0.0010</td>
+<td style="text-align:center">0.8591</td>
+<td style="text-align:center">0.7838</td>
 </tr>
 <tr>
 <td style="text-align:center">200</td>
-<td style="text-align:center">EXAMPLE</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
+<td style="text-align:center">0.0100</td>
+<td style="text-align:center">0.0030</td>
+<td style="text-align:center">0.8693</td>
+<td style="text-align:center">0.7755</td>
 </tr>
 <tr>
 <td style="text-align:center">300</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center">EXAMPLE</td>
+<td style="text-align:center">0.0150</td>
+<td style="text-align:center">0.0040</td>
+<td style="text-align:center">0.8692</td>
+<td style="text-align:center">0.7586</td>
 </tr>
 </tbody>
 </table>
-<p><strong> Classifer 3 - ?</strong></p>
+<p><strong> Classifer 3 - RandomForest Classifier</strong></p>
 <table>
 <thead><tr>
 <th style="text-align:center">Training Set Size</th>
@@ -12562,24 +12619,24 @@ F1 score for test set: 0.7218.
 <tbody>
 <tr>
 <td style="text-align:center">100</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
+<td style="text-align:center">0.0220</td>
+<td style="text-align:center">0.0010</td>
+<td style="text-align:center">0.9457</td>
+<td style="text-align:center">0.7338</td>
 </tr>
 <tr>
 <td style="text-align:center">200</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
+<td style="text-align:center">0.0230</td>
+<td style="text-align:center">0.0020</td>
+<td style="text-align:center">0.9552</td>
+<td style="text-align:center">0.7244</td>
 </tr>
 <tr>
 <td style="text-align:center">300</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
+<td style="text-align:center">0.0250</td>
+<td style="text-align:center">0.0010</td>
+<td style="text-align:center">0.9831</td>
+<td style="text-align:center">0.7737</td>
 </tr>
 </tbody>
 </table>
@@ -12612,7 +12669,8 @@ F1 score for test set: 0.7218.
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer: </strong></p>
+<p><strong>Answer: </strong>
+SGDClassifier</p>
 
 </div>
 </div>
