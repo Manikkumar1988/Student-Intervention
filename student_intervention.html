@@ -11972,7 +11972,7 @@ None
 <span class="n">n_students</span> <span class="o">=</span> <span class="n">student_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
 <span class="c1"># TODO: Calculate number of features</span>
-<span class="n">n_features</span> <span class="o">=</span> <span class="n">student_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">n_features</span> <span class="o">=</span> <span class="n">student_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>
 
 <span class="c1"># TODO: Calculate passing students</span>
 <span class="n">n_passed</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">student_data</span><span class="p">[</span><span class="n">student_data</span><span class="p">[</span><span class="s1">&#39;passed&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;yes&#39;</span><span class="p">])</span>
@@ -12004,7 +12004,7 @@ None
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Total number of students: 395
-Number of features: 31
+Number of features: 30
 Number of students who passed: 265
 Number of students who failed: 130
 Graduation rate of the class: 67.09%
@@ -12537,56 +12537,56 @@ increased training time and complexity. If we assume that the points are d-dimen
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Training a GradientBoostingClassifier using a training set size of 100. . .
-Trained model in 0.1430 seconds
+Trained model in 0.1350 seconds
 Made predictions in 0.0010 seconds.
 F1 score for training set: 1.0000.
 Made predictions in 0.0010 seconds.
-F1 score for test set: 0.7576.
+F1 score for test set: 0.7612.
 Training a GradientBoostingClassifier using a training set size of 200. . .
-Trained model in 0.1770 seconds
-Made predictions in 0.0020 seconds.
+Trained model in 0.1540 seconds
+Made predictions in 0.0010 seconds.
 F1 score for training set: 0.9852.
-Made predictions in 0.0000 seconds.
+Made predictions in 0.0010 seconds.
 F1 score for test set: 0.7910.
 Training a GradientBoostingClassifier using a training set size of 300. . .
-Trained model in 0.2460 seconds
+Trained model in 0.1840 seconds
 Made predictions in 0.0020 seconds.
 F1 score for training set: 0.9740.
 Made predictions in 0.0010 seconds.
 F1 score for test set: 0.7727.
 Training a KNeighborsClassifier using a training set size of 100. . .
-Trained model in 0.0020 seconds
+Trained model in 0.0010 seconds
 Made predictions in 0.0030 seconds.
 F1 score for training set: 0.7972.
-Made predictions in 0.0030 seconds.
+Made predictions in 0.0040 seconds.
 F1 score for test set: 0.7068.
 Training a KNeighborsClassifier using a training set size of 200. . .
 Trained model in 0.0020 seconds
-Made predictions in 0.0080 seconds.
+Made predictions in 0.0090 seconds.
 F1 score for training set: 0.8571.
 Made predictions in 0.0040 seconds.
 F1 score for test set: 0.7121.
 Training a KNeighborsClassifier using a training set size of 300. . .
 Trained model in 0.0020 seconds
-Made predictions in 0.0200 seconds.
+Made predictions in 0.0170 seconds.
 F1 score for training set: 0.8722.
-Made predictions in 0.0080 seconds.
+Made predictions in 0.0060 seconds.
 F1 score for test set: 0.7482.
 Training a SVC using a training set size of 100. . .
 Trained model in 0.0030 seconds
-Made predictions in 0.0020 seconds.
+Made predictions in 0.0010 seconds.
 F1 score for training set: 0.8591.
-Made predictions in 0.0020 seconds.
+Made predictions in 0.0010 seconds.
 F1 score for test set: 0.7838.
 Training a SVC using a training set size of 200. . .
-Trained model in 0.0100 seconds
+Trained model in 0.0070 seconds
 Made predictions in 0.0060 seconds.
 F1 score for training set: 0.8693.
-Made predictions in 0.0030 seconds.
+Made predictions in 0.0020 seconds.
 F1 score for test set: 0.7755.
 Training a SVC using a training set size of 300. . .
-Trained model in 0.0160 seconds
-Made predictions in 0.0120 seconds.
+Trained model in 0.0150 seconds
+Made predictions in 0.0110 seconds.
 F1 score for training set: 0.8692.
 Made predictions in 0.0040 seconds.
 F1 score for test set: 0.7586.
@@ -12805,7 +12805,7 @@ I prefer to trade off the training time for the higher accuracy. The reason behi
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Import &#39;GridSearchCV&#39; and &#39;make_scorer&#39;</span>
@@ -12815,7 +12815,7 @@ I prefer to trade off the training time for the higher accuracy. The reason behi
 <span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="kn">import</span> <span class="n">StratifiedShuffleSplit</span>
 
 <span class="c1"># TODO: Create the parameters list you wish to tune</span>
-<span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">260</span><span class="p">,</span><span class="mi">280</span><span class="p">)),</span><span class="s1">&#39;loss&#39;</span><span class="p">:(</span><span class="s1">&#39;exponential&#39;</span><span class="p">,</span><span class="s1">&#39;deviance&#39;</span><span class="p">),</span><span class="s1">&#39;max_depth&#39;</span><span class="p">:</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">))}</span>
+<span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">260</span><span class="p">,</span><span class="mi">270</span><span class="p">)),</span><span class="s1">&#39;loss&#39;</span><span class="p">:(</span><span class="s1">&#39;exponential&#39;</span><span class="p">,</span><span class="s1">&#39;deviance&#39;</span><span class="p">),</span><span class="s1">&#39;max_depth&#39;</span><span class="p">:</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">))}</span>
 
 <span class="c1"># TODO: Initialize the classifier</span>
 <span class="n">clf</span> <span class="o">=</span> <span class="n">GradientBoostingClassifier</span><span class="p">()</span>
@@ -12850,9 +12850,9 @@ I prefer to trade off the training time for the higher accuracy. The reason behi
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Made predictions in 0.0000 seconds.
+<pre>Made predictions in 0.0030 seconds.
 Tuned model has a training F1 score of 0.9555.
-Made predictions in 0.0000 seconds.
+Made predictions in 0.0010 seconds.
 Tuned model has a testing F1 score of 0.7820.
 </pre>
 </div>
@@ -12895,36 +12895,6 @@ Final model's F1 score for training and testing is 0.9555 and 0.7820 respectivel
 
 </div>
 </div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="c1">#import visuals as vs</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="c1">#print X_train.info()</span>
-<span class="c1">#print &#39;asdf&#39;</span>
-<span class="c1">#y_train = y_train.replace([&#39;yes&#39;, &#39;no&#39;], [1, 0])</span>
-<span class="c1">#print y_train</span>
-<span class="c1">#vs.ModelLearning(X_train, y_train)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
