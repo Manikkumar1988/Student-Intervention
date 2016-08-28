@@ -11798,7 +11798,7 @@ In simpler terms in supervised learning, if data are used to predict the categor
 <li>Will it rain on next tuesday would use classification algorithms and what would be temperature on next tuesday would use regression algorithm for prediction.</li>
 </ol>
 <p>In our problem statement we are required to predict category of students who require intervention before they fail to graduate.</p>
-<p>It is also important to be noted that regression problem can be changed to classification problem and vice versa.</p>
+<p>It is also important to be noted that regression problem can be changed to classification problem and vice versa. It could have been a regression problem if we are trying to predict the final (continuous) score of the student instead, we want either a student will pass or fail.</p>
 
 </div>
 </div>
@@ -11867,7 +11867,7 @@ In simpler terms in supervised learning, if data are used to predict the categor
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">print</span> <span class="s1">&#39;No of rows and columns {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">student_data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
@@ -11886,10 +11886,85 @@ In simpler terms in supervised learning, if data are used to predict the categor
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>No of rows and columns (395, 31)
+sample values
+  school sex  age address famsize Pstatus  Medu  Fedu     Mjob      Fjob  \
+0     GP   F   18       U     GT3       A     4     4  at_home   teacher   
+1     GP   F   17       U     GT3       T     1     1  at_home     other   
+2     GP   F   15       U     LE3       T     1     1  at_home     other   
+3     GP   F   15       U     GT3       T     4     2   health  services   
+4     GP   F   16       U     GT3       T     3     3    other     other   
+
+   ...   internet romantic  famrel  freetime  goout Dalc Walc health absences  \
+0  ...         no       no       4         3      4    1    1      3        6   
+1  ...        yes       no       5         3      3    1    1      3        4   
+2  ...        yes       no       4         3      2    2    3      3       10   
+3  ...        yes      yes       3         2      2    1    1      5        2   
+4  ...         no       no       4         3      2    1    2      5        4   
+
+  passed  
+0     no  
+1     no  
+2    yes  
+3    yes  
+4    yes  
+
+[5 rows x 31 columns]
+Info about data-type of each columns
+&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 395 entries, 0 to 394
+Data columns (total 31 columns):
+school        395 non-null object
+sex           395 non-null object
+age           395 non-null int64
+address       395 non-null object
+famsize       395 non-null object
+Pstatus       395 non-null object
+Medu          395 non-null int64
+Fedu          395 non-null int64
+Mjob          395 non-null object
+Fjob          395 non-null object
+reason        395 non-null object
+guardian      395 non-null object
+traveltime    395 non-null int64
+studytime     395 non-null int64
+failures      395 non-null int64
+schoolsup     395 non-null object
+famsup        395 non-null object
+paid          395 non-null object
+activities    395 non-null object
+nursery       395 non-null object
+higher        395 non-null object
+internet      395 non-null object
+romantic      395 non-null object
+famrel        395 non-null int64
+freetime      395 non-null int64
+goout         395 non-null int64
+Dalc          395 non-null int64
+Walc          395 non-null int64
+health        395 non-null int64
+absences      395 non-null int64
+passed        395 non-null object
+dtypes: int64(13), object(18)
+memory usage: 67.9+ KB
+None
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span>
@@ -11948,7 +12023,7 @@ Approximately total no of students needs intervention in the training set: 130.0
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>What does value of "Graduation rate" of the class 67.09% mean?</p>
-<p>It says currently 33%(approx) of students needs intervention in the training data set.</p>
+<p>It says currently 33%(approx) of students needs intervention in the training data set. Also one potential problem could be that data has more of one target class, which is pass, than the other, fail category. Instaed of equal number of target classes. It would have impact on chosen model and accuracy metric. Need to taken in consideration while choosing the algorithm.</p>
 
 </div>
 </div>
@@ -11967,7 +12042,7 @@ Approximately total no of students needs intervention in the training set: 130.0
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Extract feature columns</span>
@@ -12049,7 +12124,7 @@ Feature values:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">preprocess_features</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
@@ -12120,7 +12195,7 @@ Feature values:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Import any additional functionality you may need here</span>
@@ -12215,7 +12290,7 @@ Testing set has 95 samples.
 </ul>
 <p>However it's not possible to get best values for all parameter, we can bring the optimal value based on our need.</p>
 <p>Along with checking above parameters of our chosen appropriate algorithm, algorithm's functionality and strength/weakness are to considered</p>
-<h3 id="Decision-Trees">Decision Trees<a class="anchor-link" href="#Decision-Trees">&#182;</a></h3><p>Decision trees poses a series of carefully crafted questions about the attributes of the each record. Each time time it receive an answer, a follow-up question is asked until a conclusion about the class label of the record is reached.</p>
+<h3 id="Gradient-Boosting---Decision-Trees">Gradient Boosting - Decision Trees<a class="anchor-link" href="#Gradient-Boosting---Decision-Trees">&#182;</a></h3><p>Decision trees poses a series of carefully crafted questions about the attributes of the each record. Each time time it receive an answer, a follow-up question is asked until a conclusion about the class label of the record is reached.</p>
 <p><strong>Strength of the model</strong></p>
 <ul>
 <li>Should be faster once trained</li>
@@ -12328,7 +12403,7 @@ increased training time and complexity. If we assume that the points are d-dimen
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">train_classifier</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">):</span>
@@ -12401,19 +12476,19 @@ increased training time and complexity. If we assume that the points are d-dimen
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Import the three supervised learning models from sklearn</span>
-<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">SGDClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">GradientBoostingClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">svm</span>
-<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
 
 <span class="c1"># TODO: Initialize the three models</span>
 
-<span class="n">clf_A</span> <span class="o">=</span> <span class="n">SGDClassifier</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s2">&quot;modified_huber&quot;</span><span class="p">)</span>
-<span class="n">clf_B</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">SVC</span><span class="p">()</span>
-<span class="n">clf_C</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">clf_A</span> <span class="o">=</span> <span class="n">GradientBoostingClassifier</span><span class="p">()</span>
+<span class="n">clf_B</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">()</span>
+<span class="n">clf_C</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">SVC</span><span class="p">()</span>
 
 <span class="c1"># TODO: Set up the training set sizes</span>
 <span class="n">X_train_100</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[:</span><span class="mi">100</span><span class="p">]</span>
@@ -12461,60 +12536,60 @@ increased training time and complexity. If we assume that the points are d-dimen
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Training a SGDClassifier using a training set size of 100. . .
-Trained model in 0.1400 seconds
-Made predictions in 0.1410 seconds.
-F1 score for training set: 0.7805.
+<pre>Training a GradientBoostingClassifier using a training set size of 100. . .
+Trained model in 0.1430 seconds
+Made predictions in 0.0010 seconds.
+F1 score for training set: 1.0000.
+Made predictions in 0.0010 seconds.
+F1 score for test set: 0.7576.
+Training a GradientBoostingClassifier using a training set size of 200. . .
+Trained model in 0.1770 seconds
+Made predictions in 0.0020 seconds.
+F1 score for training set: 0.9852.
 Made predictions in 0.0000 seconds.
-F1 score for test set: 0.7662.
-Training a SGDClassifier using a training set size of 200. . .
-Trained model in 0.0000 seconds
-Made predictions in 0.0000 seconds.
-F1 score for training set: 0.4419.
-Made predictions in 0.0000 seconds.
-F1 score for test set: 0.3846.
-Training a SGDClassifier using a training set size of 300. . .
-Trained model in 0.0000 seconds
-Made predictions in 0.0000 seconds.
-F1 score for training set: 0.8166.
-Made predictions in 0.0000 seconds.
-F1 score for test set: 0.7770.
+F1 score for test set: 0.7910.
+Training a GradientBoostingClassifier using a training set size of 300. . .
+Trained model in 0.2460 seconds
+Made predictions in 0.0020 seconds.
+F1 score for training set: 0.9740.
+Made predictions in 0.0010 seconds.
+F1 score for test set: 0.7727.
+Training a KNeighborsClassifier using a training set size of 100. . .
+Trained model in 0.0020 seconds
+Made predictions in 0.0030 seconds.
+F1 score for training set: 0.7972.
+Made predictions in 0.0030 seconds.
+F1 score for test set: 0.7068.
+Training a KNeighborsClassifier using a training set size of 200. . .
+Trained model in 0.0020 seconds
+Made predictions in 0.0080 seconds.
+F1 score for training set: 0.8571.
+Made predictions in 0.0040 seconds.
+F1 score for test set: 0.7121.
+Training a KNeighborsClassifier using a training set size of 300. . .
+Trained model in 0.0020 seconds
+Made predictions in 0.0200 seconds.
+F1 score for training set: 0.8722.
+Made predictions in 0.0080 seconds.
+F1 score for test set: 0.7482.
 Training a SVC using a training set size of 100. . .
-Trained model in 0.0150 seconds
-Made predictions in 0.0000 seconds.
+Trained model in 0.0030 seconds
+Made predictions in 0.0020 seconds.
 F1 score for training set: 0.8591.
-Made predictions in 0.0160 seconds.
+Made predictions in 0.0020 seconds.
 F1 score for test set: 0.7838.
 Training a SVC using a training set size of 200. . .
-Trained model in 0.0150 seconds
-Made predictions in 0.0160 seconds.
+Trained model in 0.0100 seconds
+Made predictions in 0.0060 seconds.
 F1 score for training set: 0.8693.
-Made predictions in 0.0000 seconds.
+Made predictions in 0.0030 seconds.
 F1 score for test set: 0.7755.
 Training a SVC using a training set size of 300. . .
-Trained model in 0.0310 seconds
-Made predictions in 0.0150 seconds.
+Trained model in 0.0160 seconds
+Made predictions in 0.0120 seconds.
 F1 score for training set: 0.8692.
-Made predictions in 0.0000 seconds.
+Made predictions in 0.0040 seconds.
 F1 score for test set: 0.7586.
-Training a RandomForestClassifier using a training set size of 100. . .
-Trained model in 0.0310 seconds
-Made predictions in 0.0000 seconds.
-F1 score for training set: 0.9688.
-Made predictions in 0.0000 seconds.
-F1 score for test set: 0.7612.
-Training a RandomForestClassifier using a training set size of 200. . .
-Trained model in 0.0310 seconds
-Made predictions in 0.0000 seconds.
-F1 score for training set: 0.9660.
-Made predictions in 0.0000 seconds.
-F1 score for test set: 0.7752.
-Training a RandomForestClassifier using a training set size of 300. . .
-Trained model in 0.0310 seconds
-Made predictions in 0.0000 seconds.
-F1 score for training set: 0.9805.
-Made predictions in 0.0000 seconds.
-F1 score for test set: 0.7391.
 </pre>
 </div>
 </div>
@@ -12538,7 +12613,7 @@ F1 score for test set: 0.7391.
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong> Classifer 1 - GuassianNb</strong></p>
+<p><strong> Classifer 1 - GradientBoostingClassifier</strong></p>
 <table>
 <thead><tr>
 <th style="text-align:center">Training Set Size</th>
@@ -12551,28 +12626,28 @@ F1 score for test set: 0.7391.
 <tbody>
 <tr>
 <td style="text-align:center">100</td>
-<td style="text-align:center">0.0360</td>
-<td style="text-align:center">0.0010</td>
-<td style="text-align:center">0.8550</td>
+<td style="text-align:center">0.1670</td>
+<td style="text-align:center">0.0000</td>
+<td style="text-align:center">1.0000</td>
 <td style="text-align:center">0.7481</td>
 </tr>
 <tr>
 <td style="text-align:center">200</td>
-<td style="text-align:center">0.0020</td>
+<td style="text-align:center">0.2250</td>
 <td style="text-align:center">0.0010</td>
-<td style="text-align:center">0.8321</td>
-<td style="text-align:center">0.7132</td>
+<td style="text-align:center">0.9852</td>
+<td style="text-align:center">0.7879</td>
 </tr>
 <tr>
 <td style="text-align:center">300</td>
-<td style="text-align:center">0.0040</td>
-<td style="text-align:center">0.0020</td>
-<td style="text-align:center">0.8088</td>
-<td style="text-align:center">0.7500</td>
+<td style="text-align:center">0.2520</td>
+<td style="text-align:center">0.0010</td>
+<td style="text-align:center">0.9740</td>
+<td style="text-align:center">0.7727</td>
 </tr>
 </tbody>
 </table>
-<p><strong> Classifer 2 - Support Vector Machine</strong></p>
+<p><strong> Classifer 2 - KNeighborsClassifier</strong></p>
 <table>
 <thead><tr>
 <th style="text-align:center">Training Set Size</th>
@@ -12585,58 +12660,58 @@ F1 score for test set: 0.7391.
 <tbody>
 <tr>
 <td style="text-align:center">100</td>
-<td style="text-align:center">0.0040</td>
+<td style="text-align:center">0.0010</td>
+<td style="text-align:center">0.0020</td>
+<td style="text-align:center">0.7972</td>
+<td style="text-align:center">0.7068</td>
+</tr>
+<tr>
+<td style="text-align:center">200</td>
+<td style="text-align:center">0.0020</td>
+<td style="text-align:center">0.0050</td>
+<td style="text-align:center">0.8571</td>
+<td style="text-align:center">0.7121</td>
+</tr>
+<tr>
+<td style="text-align:center">300</td>
+<td style="text-align:center">0.0020</td>
+<td style="text-align:center">0.0070</td>
+<td style="text-align:center">0.8722</td>
+<td style="text-align:center">0.7482</td>
+</tr>
+</tbody>
+</table>
+<p><strong> Classifer 3 - SVC</strong></p>
+<table>
+<thead><tr>
+<th style="text-align:center">Training Set Size</th>
+<th style="text-align:center">Training Time</th>
+<th style="text-align:center">Prediction Time (test)</th>
+<th style="text-align:center">F1 Score (train)</th>
+<th style="text-align:center">F1 Score (test)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">100</td>
+<td style="text-align:center">0.0270</td>
 <td style="text-align:center">0.0010</td>
 <td style="text-align:center">0.8591</td>
 <td style="text-align:center">0.7838</td>
 </tr>
 <tr>
 <td style="text-align:center">200</td>
-<td style="text-align:center">0.0100</td>
+<td style="text-align:center">0.0070</td>
 <td style="text-align:center">0.0030</td>
 <td style="text-align:center">0.8693</td>
 <td style="text-align:center">0.7755</td>
 </tr>
 <tr>
 <td style="text-align:center">300</td>
-<td style="text-align:center">0.0150</td>
-<td style="text-align:center">0.0040</td>
+<td style="text-align:center">0.0160</td>
+<td style="text-align:center">0.0090</td>
 <td style="text-align:center">0.8692</td>
 <td style="text-align:center">0.7586</td>
-</tr>
-</tbody>
-</table>
-<p><strong> Classifer 3 - RandomForest Classifier</strong></p>
-<table>
-<thead><tr>
-<th style="text-align:center">Training Set Size</th>
-<th style="text-align:center">Training Time</th>
-<th style="text-align:center">Prediction Time (test)</th>
-<th style="text-align:center">F1 Score (train)</th>
-<th style="text-align:center">F1 Score (test)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">100</td>
-<td style="text-align:center">0.0220</td>
-<td style="text-align:center">0.0010</td>
-<td style="text-align:center">0.9457</td>
-<td style="text-align:center">0.7338</td>
-</tr>
-<tr>
-<td style="text-align:center">200</td>
-<td style="text-align:center">0.0230</td>
-<td style="text-align:center">0.0020</td>
-<td style="text-align:center">0.9552</td>
-<td style="text-align:center">0.7244</td>
-</tr>
-<tr>
-<td style="text-align:center">300</td>
-<td style="text-align:center">0.0250</td>
-<td style="text-align:center">0.0010</td>
-<td style="text-align:center">0.9831</td>
-<td style="text-align:center">0.7737</td>
 </tr>
 </tbody>
 </table>
@@ -12670,7 +12745,11 @@ F1 score for test set: 0.7391.
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong>
-SGDClassifier</p>
+GradientBoostingClassifier is the best model among the analysis of three chosen algorithms based on certain factors.</p>
+<p>Justification
+I prefer to trade off the training time for the higher accuracy. The reason behind is that business requirement is to identify the unsucessful students at the earlier.So the application needs to accurate with results and hence in circumstances like these it is okay to trade off training time for performance.</p>
+<p>Concluding from above reasoning, parameter of importance can be sorted like Accuracy, available data, limited resource, and cost.</p>
+<p>Though training of model is much higher than compared to the other models, which is expected as we chosen base estimator as decision tree, fortunately predicting time is much lower. And it is imperious that accuracy is more compared to others.</p>
 
 </div>
 </div>
@@ -12691,6 +12770,11 @@ SGDClassifier</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong></p>
+<p>Imagine, that you are trying to solve a very difficult problem. You give an initial solution, which may be bad, but then you see where you are wrong and you are going to improve that solution. But in every iteration only thing you do is alternating your strategy to correct the mistakes you made in the previous one.</p>
+<p>The next thing is more interesting. When you think you are done, you don't just throw away all but one solutions - you collect then, estimate the error in each and assign a number to them, which indicates, how important this solution is, according to it's correctness. And in order to have final solution, you just make a certain decision, based on "weak" answers you got.</p>
+<p>This combination of weak solutions works usually better, than a strong one.</p>
+<p>And the strategy that has been executed during each iteration is analogy to playing a guessing game, you must figure out what is chosen/imagined.  At each turn, you may ask a yes-or-no question, and your opponent must answer truthfully.  And key here is to find out in the fewest number of questions.</p>
+<p>Credits: Quora</p>
 
 </div>
 </div>
@@ -12721,25 +12805,32 @@ SGDClassifier</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Import &#39;GridSearchCV&#39; and &#39;make_scorer&#39;</span>
+<span class="kn">from</span> <span class="nn">sklearn.grid_search</span> <span class="kn">import</span> <span class="n">GridSearchCV</span> 
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">make_scorer</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">f1_score</span>
+<span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="kn">import</span> <span class="n">StratifiedShuffleSplit</span>
 
 <span class="c1"># TODO: Create the parameters list you wish to tune</span>
-<span class="n">parameters</span> <span class="o">=</span> <span class="bp">None</span>
+<span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">260</span><span class="p">,</span><span class="mi">280</span><span class="p">)),</span><span class="s1">&#39;loss&#39;</span><span class="p">:(</span><span class="s1">&#39;exponential&#39;</span><span class="p">,</span><span class="s1">&#39;deviance&#39;</span><span class="p">),</span><span class="s1">&#39;max_depth&#39;</span><span class="p">:</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">))}</span>
 
 <span class="c1"># TODO: Initialize the classifier</span>
-<span class="n">clf</span> <span class="o">=</span> <span class="bp">None</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">GradientBoostingClassifier</span><span class="p">()</span>
 
 <span class="c1"># TODO: Make an f1 scoring function using &#39;make_scorer&#39; </span>
-<span class="n">f1_scorer</span> <span class="o">=</span> <span class="bp">None</span>
+<span class="n">f1_scorer</span> <span class="o">=</span> <span class="n">make_scorer</span><span class="p">(</span><span class="n">f1_score</span><span class="p">,</span><span class="n">pos_label</span><span class="o">=</span><span class="s2">&quot;yes&quot;</span><span class="p">,</span><span class="n">average</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
+
+<span class="c1"># Create cross-validation sets from the training data</span>
+<span class="n">cv_sets</span> <span class="o">=</span> <span class="n">StratifiedShuffleSplit</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
 <span class="c1"># TODO: Perform grid search on the classifier using the f1_scorer as the scoring method</span>
-<span class="n">grid_obj</span> <span class="o">=</span> <span class="bp">None</span>
+<span class="n">grid_obj</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">scoring</span> <span class="o">=</span> <span class="n">f1_scorer</span><span class="p">,</span><span class="n">cv</span> <span class="o">=</span> <span class="n">cv_sets</span><span class="p">)</span>
 
 <span class="c1"># TODO: Fit the grid search object to the training data and find the optimal parameters</span>
-<span class="n">grid_obj</span> <span class="o">=</span> <span class="bp">None</span>
+<span class="n">grid_obj</span> <span class="o">=</span> <span class="n">grid_obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 
 <span class="c1"># Get the estimator</span>
 <span class="n">clf</span> <span class="o">=</span> <span class="n">grid_obj</span><span class="o">.</span><span class="n">best_estimator_</span>
@@ -12750,6 +12841,23 @@ SGDClassifier</p>
 </pre></div>
 
 </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Made predictions in 0.0000 seconds.
+Tuned model has a training F1 score of 0.9555.
+Made predictions in 0.0000 seconds.
+Tuned model has a testing F1 score of 0.7820.
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -12769,7 +12877,9 @@ SGDClassifier</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer: </strong></p>
+<p><strong>Answer: </strong>
+Final model's F1 score for training and testing is 0.9555 and 0.7820 respectively.</p>
+<p>Needless to say that satisfactory F1 score of 0.7820 on the test sets where obtained, which was better than the untuned model.</p>
 
 </div>
 </div>
@@ -12785,6 +12895,49 @@ SGDClassifier</p>
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1">#import visuals as vs</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1">#print X_train.info()</span>
+<span class="c1">#print &#39;asdf&#39;</span>
+<span class="c1">#y_train = y_train.replace([&#39;yes&#39;, &#39;no&#39;], [1, 0])</span>
+<span class="c1">#print y_train</span>
+<span class="c1">#vs.ModelLearning(X_train, y_train)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span> 
+</pre></div>
+
+</div>
+</div>
+</div>
+
 </div>
     </div>
   </div>
