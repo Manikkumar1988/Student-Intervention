@@ -12315,7 +12315,7 @@ The constructing decision tree techniques are generally computationally inexpens
 <li>Decision tree learners create biased trees if some classes dominate. It is therefore recommended to balance the dataset prior to fitting with the decision tree.</li>
 <li>It tends to slow down training when training deep trees</li>
 </ul>
-<p><strong>Good Candidate</strong> Yes, Yet along with ensemble method, gradient boosting, we can iteratively reach optimal model</p>
+<p><strong>Good Candidate</strong> Yes, As data perparation is relatively easier and prediciton time is very less as compared to training time.</p>
 <p>Real World Usage: Precipitation Classification Using Measurements From Commercial Microwave Links
 <a href="http://ieeexplore.ieee.org/document/6524051/">http://ieeexplore.ieee.org/document/6524051/</a></p>
 <h3 id="K-Nearest-Neighbors-(KNeighbors)">K-Nearest Neighbors (KNeighbors)<a class="anchor-link" href="#K-Nearest-Neighbors-(KNeighbors)">&#182;</a></h3><p>An object is classified by a majority vote of its neighbors, with the object being assigned to the class most common among 
@@ -12340,7 +12340,7 @@ have similar densities or classes). A simple approach to select k is set  k=sqrt
 Even though the naive method takes O(dn) time, it is very hard to do better unless we make some other assumptions. There 
 are some efficient data structures like KD-Tree  which can reduce the time complexity but they do it at the cost of 
 increased training time and complexity. If we assume that the points are d-dimensional, then the straight forward implementation of finding k Nearest Neighbor takes O(dn) time.</p>
-<p><strong>Good Candidate</strong> Yes, intuitively data closer should be classifed as single class</p>
+<p><strong>Good Candidate</strong> Yes, intuitively data closer can be grouped for our problem type, yet I'm intrested in exploring this algorithm performance with others to validate my assumption on closer data can be grouped into class.</p>
 <p>Real World Usage: Better Prediction of Protein Cellular Localization Sites with the it k Nearest Neighbors Classifier.
 <a href="http://www.aaai.org/Papers/ISMB/1997/ISMB97-022.pdf">http://www.aaai.org/Papers/ISMB/1997/ISMB97-022.pdf</a></p>
 <h3 id="Support-Vector-Machines-(SVM)">Support Vector Machines (SVM)<a class="anchor-link" href="#Support-Vector-Machines-(SVM)">&#182;</a></h3><p>It is a non-probabilistic binary linear classifier. SVM model is a representation of the examples as points in space, mapped so that the examples of the separate categories are divided by a clear gap that is as wide as possible. New examples are then mapped into that same space and predicted to belong to a category based on which side of the gap they fall on.</p>
@@ -12358,7 +12358,7 @@ increased training time and complexity. If we assume that the points are d-dimen
 <li>Requires significant memory and processing power</li>
 <li>No standardized way for dealing with multi-class problems; fundamentally a binary classifier</li>
 </ul>
-<p><strong>Good Candidate</strong> Yes, due to binary classification</p>
+<p><strong>Good Candidate</strong> Yes, due to binary classification support and high accuracy is demanded for our problem statement working in high dimension.</p>
 <p>Real World Usage: An efficient approach to predict tumor in 2D Brain image using classification techniques
 <a href="http://ieeexplore.ieee.org/document/6508256/">http://ieeexplore.ieee.org/document/6508256/</a></p>
 <h2 id="Discussion-on-rejected-algoritms">Discussion on rejected algoritms<a class="anchor-link" href="#Discussion-on-rejected-algoritms">&#182;</a></h2><h3 id="Gaussian-Naive-Bayes:">Gaussian Naive Bayes:<a class="anchor-link" href="#Gaussian-Naive-Bayes:">&#182;</a></h3><p><strong>Strength of the model</strong></p>
@@ -12486,9 +12486,9 @@ increased training time and complexity. If we assume that the points are d-dimen
 
 <span class="c1"># TODO: Initialize the three models</span>
 
-<span class="n">clf_A</span> <span class="o">=</span> <span class="n">GradientBoostingClassifier</span><span class="p">()</span>
+<span class="n">clf_A</span> <span class="o">=</span> <span class="n">GradientBoostingClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">34</span><span class="p">)</span>
 <span class="n">clf_B</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">()</span>
-<span class="n">clf_C</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">SVC</span><span class="p">()</span>
+<span class="n">clf_C</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">SVC</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">34</span><span class="p">)</span>
 
 <span class="c1"># TODO: Set up the training set sizes</span>
 <span class="n">X_train_100</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[:</span><span class="mi">100</span><span class="p">]</span>
@@ -12537,55 +12537,55 @@ increased training time and complexity. If we assume that the points are d-dimen
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Training a GradientBoostingClassifier using a training set size of 100. . .
-Trained model in 0.1350 seconds
+Trained model in 0.1770 seconds
 Made predictions in 0.0010 seconds.
 F1 score for training set: 1.0000.
 Made predictions in 0.0010 seconds.
-F1 score for test set: 0.7612.
+F1 score for test set: 0.7576.
 Training a GradientBoostingClassifier using a training set size of 200. . .
-Trained model in 0.1540 seconds
-Made predictions in 0.0010 seconds.
+Trained model in 0.1830 seconds
+Made predictions in 0.0030 seconds.
 F1 score for training set: 0.9852.
 Made predictions in 0.0010 seconds.
-F1 score for test set: 0.7910.
+F1 score for test set: 0.7879.
 Training a GradientBoostingClassifier using a training set size of 300. . .
-Trained model in 0.1840 seconds
+Trained model in 0.2490 seconds
 Made predictions in 0.0020 seconds.
 F1 score for training set: 0.9740.
 Made predictions in 0.0010 seconds.
 F1 score for test set: 0.7727.
 Training a KNeighborsClassifier using a training set size of 100. . .
 Trained model in 0.0010 seconds
-Made predictions in 0.0030 seconds.
+Made predictions in 0.0040 seconds.
 F1 score for training set: 0.7972.
 Made predictions in 0.0040 seconds.
 F1 score for test set: 0.7068.
 Training a KNeighborsClassifier using a training set size of 200. . .
 Trained model in 0.0020 seconds
-Made predictions in 0.0090 seconds.
+Made predictions in 0.0100 seconds.
 F1 score for training set: 0.8571.
 Made predictions in 0.0040 seconds.
 F1 score for test set: 0.7121.
 Training a KNeighborsClassifier using a training set size of 300. . .
 Trained model in 0.0020 seconds
-Made predictions in 0.0170 seconds.
+Made predictions in 0.0200 seconds.
 F1 score for training set: 0.8722.
-Made predictions in 0.0060 seconds.
+Made predictions in 0.0070 seconds.
 F1 score for test set: 0.7482.
 Training a SVC using a training set size of 100. . .
 Trained model in 0.0030 seconds
-Made predictions in 0.0010 seconds.
+Made predictions in 0.0020 seconds.
 F1 score for training set: 0.8591.
-Made predictions in 0.0010 seconds.
+Made predictions in 0.0020 seconds.
 F1 score for test set: 0.7838.
 Training a SVC using a training set size of 200. . .
 Trained model in 0.0070 seconds
-Made predictions in 0.0060 seconds.
+Made predictions in 0.0050 seconds.
 F1 score for training set: 0.8693.
-Made predictions in 0.0020 seconds.
+Made predictions in 0.0030 seconds.
 F1 score for test set: 0.7755.
 Training a SVC using a training set size of 300. . .
-Trained model in 0.0150 seconds
+Trained model in 0.0160 seconds
 Made predictions in 0.0110 seconds.
 F1 score for training set: 0.8692.
 Made predictions in 0.0040 seconds.
@@ -12613,8 +12613,7 @@ F1 score for test set: 0.7586.
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong> Classifer 1 - GradientBoostingClassifier</strong></p>
-<table>
+<h5 id="-Classifer-1---GradientBoostingClassifier"><strong> Classifer 1 - GradientBoostingClassifier</strong><a class="anchor-link" href="#-Classifer-1---GradientBoostingClassifier">&#182;</a></h5><table>
 <thead><tr>
 <th style="text-align:center">Training Set Size</th>
 <th style="text-align:center">Training Time</th>
@@ -12629,7 +12628,7 @@ F1 score for test set: 0.7586.
 <td style="text-align:center">0.1670</td>
 <td style="text-align:center">0.0000</td>
 <td style="text-align:center">1.0000</td>
-<td style="text-align:center">0.7481</td>
+<td style="text-align:center">0.7576</td>
 </tr>
 <tr>
 <td style="text-align:center">200</td>
@@ -12818,7 +12817,7 @@ I prefer to trade off the training time for the higher accuracy. The reason behi
 <span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">260</span><span class="p">,</span><span class="mi">270</span><span class="p">)),</span><span class="s1">&#39;loss&#39;</span><span class="p">:(</span><span class="s1">&#39;exponential&#39;</span><span class="p">,</span><span class="s1">&#39;deviance&#39;</span><span class="p">),</span><span class="s1">&#39;max_depth&#39;</span><span class="p">:</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">))}</span>
 
 <span class="c1"># TODO: Initialize the classifier</span>
-<span class="n">clf</span> <span class="o">=</span> <span class="n">GradientBoostingClassifier</span><span class="p">()</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">GradientBoostingClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">34</span><span class="p">)</span>
 
 <span class="c1"># TODO: Make an f1 scoring function using &#39;make_scorer&#39; </span>
 <span class="n">f1_scorer</span> <span class="o">=</span> <span class="n">make_scorer</span><span class="p">(</span><span class="n">f1_score</span><span class="p">,</span><span class="n">pos_label</span><span class="o">=</span><span class="s2">&quot;yes&quot;</span><span class="p">,</span><span class="n">average</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
@@ -12850,10 +12849,10 @@ I prefer to trade off the training time for the higher accuracy. The reason behi
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Made predictions in 0.0030 seconds.
+<pre>Made predictions in 0.0000 seconds.
 Tuned model has a training F1 score of 0.9555.
-Made predictions in 0.0010 seconds.
-Tuned model has a testing F1 score of 0.7820.
+Made predictions in 0.0000 seconds.
+Tuned model has a testing F1 score of 0.7879.
 </pre>
 </div>
 </div>
@@ -12878,8 +12877,8 @@ Tuned model has a testing F1 score of 0.7820.
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong>
-Final model's F1 score for training and testing is 0.9555 and 0.7820 respectively.</p>
-<p>Needless to say that satisfactory F1 score of 0.7820 on the test sets where obtained, which was better than the untuned model.</p>
+Final model's F1 score for training and testing is 0.9555 and 0.7879 respectively.</p>
+<p>Needless to say that satisfactory F1 score of 0.7879 on the test sets where obtained, which was better than the untuned model.</p>
 
 </div>
 </div>
